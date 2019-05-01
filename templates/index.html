@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+    <title>Recommendation Engine</title>
+    <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        <h2>Recommendation Engine</h2>
+
+        <form action="" method="post" role="form">
+
+            <div class="form-group">
+                <label>Pick user (0-942):</label>
+                <input type="number" id="pickUser" name="pickUser" required min="0" max="942">
+            </div>
+            <button type="submit" class="btn btn-success">Sign Up</button>
+        </form>
+        {% if messages %}
+        {% for len,knwn,rcmnd in messages %}
+        <br>
+        {%if len>=0%}
+        <strong>User {{len}}<strong>
+                <br>
+                <strong>Known Positives<strong>
+                        <ul>
+                            {% for i in knwn%}
+                            <li>
+                                <div class="alert alert-info">
+                                    {{ i }}
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                        <strong>Recommended<strong>
+                                <ul>
+                                    {% for i in rcmnd%}
+                                    <li>
+                                        <div class="alert alert-info">
+                                            {{ i }}
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {%endif%}
+                                {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+
+
+    </div>
+    <br>
+    </div>
+    </div>
+</body>
+
+</html>
